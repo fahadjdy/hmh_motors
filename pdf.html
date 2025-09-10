@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Product List — Company</title>
+  <style>
+    :root{
+      --brand:#0a6fbf;
+      --muted:#666;
+      --card-gap:20px;
+      --card-border:10px; /* requested thickness */
+      --max-width:1200px;
+      --header-height:140px;
+    }
+
+    /* Reset-ish */
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;line-height:1.35;color:#222;padding:20px 0 120px;background:#f6f8fb}
+
+    /* Container */
+    .container{max-width:var(--max-width);margin:0 auto;padding:0 18px}
+
+    /* Header with wave background (SVG) */
+    header.site-header{
+      height:var(--header-height);
+      background:linear-gradient(180deg,rgba(10,111,191,0.06),rgba(10,111,191,0.02));
+      position:relative;overflow:hidden;border-radius:12px;padding:18px;margin-bottom:28px;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+
+    /* SVG wave placed on the right as decorative background */
+    header.site-header::before{
+      content:"";position:absolute;right:-10%;top:0;bottom:0;width:60%;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%230a6fbf" fill-opacity="0.08" d="M0,224L48,192C96,160,192,96,288,90.7C384,85,480,139,576,165.3C672,192,768,192,864,160C960,128,1056,64,1152,42.7C1248,21,1344,43,1392,53.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');background-repeat:no-repeat;background-position:right center;background-size:cover;opacity:0.95;pointer-events:none}
+
+    .brand{display:flex;gap:16px;align-items:center;z-index:2}
+    .brand img{width:96px;height:96px;object-fit:contain;border-radius:12px;background:#fff;padding:8px}
+    .brand .company-name{font-weight:700;font-size:20px;color:var(--brand)}
+    .header-contacts{display:flex;flex-direction:column;gap:4px;text-align:right;z-index:2}
+    .header-contacts div{font-size:13px;color:var(--muted)}
+
+    /* Product grid: 3 columns, equal height cards */
+    .products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--card-gap);align-items:start}
+
+    /* Make each grid row equal height by using auto rows and stretching cards */
+    .products-grid .product-card{display:flex;flex-direction:column;align-items:stretch;background:#fff;border:var(--card-border) solid #e6eef8;border-radius:12px;padding:14px;min-height:250px; /* ensures visible height */ box-shadow:0 6px 18px rgba(13,38,63,0.06)}
+
+    /* Ensure equal height: use 100% height for child elements */
+    .product-card .media{flex:0 0 auto}
+    .product-card .body{flex:1 1 auto;display:flex;flex-direction:column;gap:10px}
+
+    /* Image rounder border inside card */
+    .product-img-wrap{width:100%;padding-top:66%;position:relative;overflow:hidden;border-radius:12px}
+    .product-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:8px}
+
+    .product-title{margin-top:10px;font-weight:600;font-size:16px;color:#0b3766;text-align:center}
+    .product-desc{font-size:13px;color:var(--muted);flex:1;margin-top:6px}
+
+    .product-meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:600;background:var(--brand);color:#fff}
+
+    /* Page break helper — add class .new-page to any card to force a page break after it when printing */
+    .page-break{display:block;height:0}
+
+    /* Terms section (will appear after products) */
+    .terms{background:#fff;margin-top:34px;padding:22px;border-radius:10px;border:1px solid #e9eef4}
+    .terms h3{margin-bottom:12px}
+    .terms p{color:var(--muted);font-size:13px}
+
+    /* Footer fixed across pages */
+    footer.site-footer{position:fixed;left:0;right:0;bottom:0;height:64px;background:#071b2a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;z-index:999;border-top:4px solid rgba(255,255,255,0.03)}
+    footer .powered{opacity:0.95}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .products-grid{grid-template-columns:repeat(2,1fr)}
+      header.site-header{height:160px}
+    }
+    @media (max-width:640px){
+      .products-grid{grid-template-columns:1fr}
+      .brand img{width:72px;height:72px}
+      header.site-header{height:170px;padding:12px}
+      .header-contacts{text-align:left}
+    }
+
+    /* Print styles: ensure page breaks, footer printed on each page */
+    @media print{
+      body{background:#fff;padding:10mm}
+      header.site-header{border-radius:0;height:90px}
+      footer.site-footer{position:fixed;bottom:0;left:0;right:0;height:28mm;background:#071b2a;color:#fff;font-size:12px}
+
+      .products-grid{gap:10mm}
+      .product-card{break-inside:avoid;page-break-inside:avoid;}
+
+      /* Example: if a card has class new-page, force page break after it */
+      .product-card.new-page{page-break-after:always}
+
+      /* Terms block should start on a new page */
+      .terms{page-break-before:always}
+
+      /* Make footer appear on every printed page (some browsers show fixed footers automatically). Add space at bottom of content so it doesn't overlap. */
+      body:after{content:"";display:block;height:34mm}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <div class="brand">
+        <!-- Replace with your logo -->
+        <img src="https://via.placeholder.com/96x96.png?text=Logo" alt="Company Logo">
+        <div>
+          <div class="company-name">Acme Widgets Pvt. Ltd.</div>
+          <div style="font-size:13px;color:var(--muted)">Innovating since 1999</div>
+        </div>
+      </div>
+
+      <div class="header-contacts">
+        <div>Email: sales@acmewidgets.com</div>
+        <div>Phone: +91 98765 43210</div>
+        <div>Address: 123 Business Road, Ahmedabad, India</div>
+      </div>
+    </header>
+
+    <!-- Products grid -->
+    <section class="products-grid" id="products">
+
+      <!-- Example product card -->
+      <article class="product-card">
+        <div class="media">
+          <div class="product-img-wrap">
+            <img src="https://picsum.photos/seed/p1/800/600" alt="Product 1">
+          </div>
+        </div>
+        <div class="body">
+          <div class="product-title">Product One</div>
+          <!-- <div class="product-desc">Short description goes here. Highlights, model, or quick specs.</div> -->
+          <!-- <div class="product-meta">
+            <div>₹ 12,499</div>
+            <a class="btn" href="#">Details</a>
+          </div> -->
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="media">
+          <div class="product-img-wrap">
+            <img src="https://picsum.photos/seed/p2/800/600" alt="Product 2">
+          </div>
+        </div>
+        <div class="body">
+          <div class="product-title">Product Two</div>
+          <!-- <div class="product-desc">Short description goes here. Highlights, model, or quick specs.</div> -->
+          <!-- <div class="product-meta">
+            <div>₹ 8,999</div>
+            <a class="btn" href="#">Details</a>
+          </div> -->
+        </div>
+      </article>
+
+      <article class="product-card new-page">
+        <div class="media">
+          <div class="product-img-wrap">
+            <img src="https://picsum.photos/seed/p3/800/600" alt="Product 3">
+          </div>
+        </div>
+        <div class="body">
+          <div class="product-title">Product Three (Break after this card when printing)</div>
+          <!-- <div class="product-desc">This card has class <code>new-page</code> — when printing there will be a page break after it.</div> -->
+          <!-- <div class="product-meta">
+            <div>₹ 25,000</div>
+            <a class="btn" href="#">Details</a>
+          </div> -->
+        </div>
+      </article>
+
+      <!-- More sample cards -->
+      <article class="product-card">
+        <div class="media">
+          <div class="product-img-wrap">
+            <img src="https://picsum.photos/seed/p4/800/600" alt="Product 4">
+          </div>
+        </div>
+        <div class="body">
+          <div class="product-title">Product Four</div>
+          <!-- <div class="product-desc">Nice to have feature list here.</div> -->
+          <!-- <div class="product-meta">
+            <div>₹ 3,499</div>
+            <a class="btn" href="#">Details</a>
+          </div> -->
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="media">
+          <div class="product-img-wrap">
+            <img src="https://picsum.photos/seed/p5/800/600" alt="Product 5">
+          </div>
+        </div>
+        <div class="body">
+          <div class="product-title">Product Five</div>
+          <!-- <div class="product-desc">A compact product with great value.</div> -->
+          <!-- <div class="product-meta">
+            <div>₹ 1,999</div>
+            <a class="btn" href="#">Details</a>
+          </div> -->
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="media">
+          <div class="product-img-wrap">
+            <img src="https://picsum.photos/seed/p6/800/600" alt="Product 6">
+          </div>
+        </div>
+        <div class="body">
+          <div class="product-title">Product Six</div>
+          <!-- <div class="product-desc">Compact specs and availability info.</div> -->
+          <!-- <div class="product-meta">
+            <div>₹ 4,499</div>
+            <a class="btn" href="#">Details</a>
+          </div> -->
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Terms & Conditions (this will appear at the end / last page when printing) -->
+    <section class="terms">
+      <h3>Terms &amp; Conditions</h3>
+      <p>
+        1. All products are subject to availability. Prices are indicative and may change without prior notice.
+      </p>
+      <p>
+        2. Warranty and return policies vary by product. Please check individual product details or contact sales.
+      </p>
+      <p>
+        3. Shipping, taxes, and other charges may apply as per our standard policies.
+      </p>
+      <p style="margin-top:12px;color:var(--muted);font-size:13px">For full terms please visit our website or contact our sales team.</p>
+    </section>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="powered">Powered by Acme Widgets Pvt. Ltd.</div>
+  </footer>
+
+</body>
+</html>
