@@ -1,150 +1,351 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoRikshaw Body Parts - Manufacturer & Retailer</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Argesta+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  
-<!-- Hero Section -->
-<section class="hero">
-  <div class="hero-overlay">
-    <div class="hero-content">
-      <h1 class="company-name">Auto Rickshaw Parts</h1>
-      <p class="slogan">Expert solutions for all your auto rickshaw needs</p>
-      <div class="hero-buttons">
-        <a href="mailto:info@company.com" class="btn-gradient">Get in Touch</a>
-      </div>
-    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/img/profile/rikshaw.webp" alt="AutoRikshaw Parts Logo">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <button class="download-btn">
+                <i class="fas fa-download"></i>
+                Brochure
+            </button>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
 
-    <div class="hero-image">
-      <img src="assets/img/profile/rikshaw.webp" alt="Human Image" class="human-img" />
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+            <div class="bubble bubble-3"></div>
+            <div class="bubble bubble-4"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">AutoRikshaw Body Parts</h1>
+                <p class="hero-slogan">Quality Parts, Reliable Service</p>
+                <p class="hero-description">Leading manufacturer and retailer of premium autorikshaw body parts. We provide durable, high-quality components for all your three-wheeler needs.</p>
+                <button class="cta-button">
+                    Get Started
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <div class="hero-image">
+                <img src="assets/img/profile/rikshaw.webp" alt="AutoRikshaw Family">
+                <div class="floating-icons">
+                    <i class="fas fa-cog icon-1"></i>
+                    <i class="fas fa-wrench icon-2"></i>
+                    <i class="fas fa-tools icon-3"></i>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <!-- Thought bubbles for services -->
-      <div class="thought-bubble bubble1">Spare Parts</div>
-      <div class="thought-bubble bubble2">Maintenance</div>
-      <div class="thought-bubble bubble3">Fast Delivery</div>
-    </div>
-  </div>
-</section>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-image">
+                <div class="image-grid">
+                    <div class="grid-item large">
+                        <!-- <img src="assets/img/profile/rikshaw.webp" alt="Parts"> -->
+                    </div>
+                    <div class="grid-item small">
+                        <!-- <img src="assets/img/profile/rikshaw.webp" alt="Wheel"> -->
+                    </div>
+                    <div class="grid-item medium">
+                        <img src="assets/img/profile/rikshaw.webp" alt="Frame">
+                    </div>
+                    <div class="grid-item small">
+                        <!-- <img src="assets/img/profile/rikshaw.webp" alt="Engine"> -->
+                    </div>
+                </div>
+                <!-- <div class="experience-badge">
+                    <div class="experience-number">7</div>
+                    <div class="experience-text">Years of Experience</div>
+                </div> -->
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                </div>
+            </div>
+            <div class="about-content">
+                <h2>Welcome to AutoRikshaw Body Parts</h2>
+                <h3>Your Trusted Partner in Quality</h3>
+                <p>With over 7 years of experience in the industry, we have established ourselves as a leading manufacturer and retailer of premium autorikshaw body parts. Our commitment to quality and customer satisfaction has made us the preferred choice for thousands of customers.</p>
+                
+                <div class="services-grid">
+                    <div class="service-item">
+                        <i class="fas fa-shipping-fast"></i>
+                        <span>Fast Delivery</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Quality Assured</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-tools"></i>
+                        <span>Expert Support</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-medal"></i>
+                        <span>Best Prices</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<style>
-    /* Hero Section */
-.hero {
-  width: 100%;
-  /* min-height: 100vh; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #fdfbfb, #ebedee);
-  padding: 50px;
-}
+    <!-- Services Section -->
+    <section class="services">
+        <div class="services-container">
+            <h2>Our Services</h2>
+            <p>Comprehensive solutions for all your autorikshaw needs</p>
+            
+            <div class="services-grid">
+                <!-- <div class="service-card">
+                    <div class="card-background"></div>
+                    <i class="fas fa-cogs"></i>
+                    <h3>Body Parts Manufacturing</h3>
+                    <p>Custom manufacturing of high-quality autorikshaw body parts with precision engineering.</p>
+                </div> -->
+                
+                <div class="service-card">
+                    <div class="card-background"></div>
+                    <i class="fas fa-store"></i>
+                    <h3>Retail Distribution</h3>
+                    <p>Wide network of retail outlets providing easy access to genuine parts across regions.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="card-background"></div>
+                    <i class="fas fa-wrench"></i>
+                    <h3>Installation Support</h3>
+                    <p>Professional installation and fitting services by our experienced technicians.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="card-background"></div>
+                    <i class="fas fa-headset"></i>
+                    <h3>Customer Support</h3>
+                    <p>24/7 customer support to help you with queries and technical assistance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-.hero-overlay {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  width: 100%;
-  gap: 40px;
-}
+    <!-- Browse by Category -->
+    <section class="categories">
+        <div class="categories-container">
+            <h2>Browse by Category</h2>
+            <div class="category-slider">
+                <div class="category-item">
+                    <img src="assets/img/profile/rikshaw.webp" alt="Body Frame">
+                    <span>Body Frame</span>
+                </div>
+                <div class="category-item">
+                    <img src="assets/img/profile/rikshaw.webp" alt="Engine Parts">
+                    <span>Engine Parts</span>
+                </div>
+                <div class="category-item">
+                    <img src="assets/img/profile/rikshaw.webp" alt="Wheels">
+                    <span>Wheels</span>
+                </div>
+                <div class="category-item">
+                    <img src="assets/img/profile/rikshaw.webp" alt="Lights">
+                    <span>Lights</span>
+                </div>
+                <div class="category-item">
+                    <img src="assets/img/profile/rikshaw.webp" alt="Seats">
+                    <span>Seats</span>
+                </div>
+                <div class="category-item">
+                    <img src="assets/img/profile/rikshaw.webp" alt="Dashboard">
+                    <span>Dashboard</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-.hero-content {
-  flex: 1;
-  text-align: left;
-}
+    <!-- Product Listing -->
+    <section class="products">
+        <div class="products-container">
+            <h2>Featured Products</h2>
+            <div class="products-grid">
+                <!-- Product cards will be generated here -->
+            </div>
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">Next</button>
+            </div>
+        </div>
+    </section>
 
-.company-name {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #222;
-  margin-bottom: 15px;
-}
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Ready to Get Started?</h2>
+            <p>Download our comprehensive brochure to explore our complete range of autorikshaw body parts and services.</p>
+            <button class="download-brochure-btn">
+                <i class="fas fa-download"></i>
+                Download Brochure
+            </button>
+        </div>
+    </section>
 
-.slogan {
-  font-size: 1.25rem;
-  margin-bottom: 25px;
-  color: #555;
-}
+    <!-- Why Choose Us -->
+    <section class="why-choose">
+        <div class="why-choose-container">
+            <h2>Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-award"></i>
+                    <h3>Premium Quality</h3>
+                    <p>ISO certified manufacturing with stringent quality control</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-clock"></i>
+                    <h3>Timely Delivery</h3>
+                    <p>Fast and reliable delivery across all major cities</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Competitive Pricing</h3>
+                    <p>Best prices in the market without compromising quality</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-users"></i>
+                    <h3>Expert Team</h3>
+                    <p>Experienced professionals with deep industry knowledge</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-.btn-gradient {
-  display: inline-block;
-  padding: 14px 32px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #fff;
-  border-radius: 50px;
-  background: linear-gradient(45deg, #00d7fd, #8bc5ff);
-  text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.btn-gradient:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(60, 190, 207, 0.4);
-}
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@autorikshawparts.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 98765 43210</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Industrial Area, Mumbai, Maharashtra 400001</span>
+                    </div>
+                </div>
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.0!2d72.8777!3d19.0760!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA0JzMzLjYiTiA3MsKwNTInMzkuNyJF!5e0!3m2!1sen!2sin!4v1234567890" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Send us a Message</h3>
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="tel" placeholder="Your Phone">
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-/* Right Side */
-.hero-image {
-  flex: 1;
-  position: relative;
-  text-align: center;
-}
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="assets/img/profile/rikshaw.webp.svg?height=40&width=100" alt="AutoRikshaw Parts">
+                </div>
+                <p>Leading manufacturer and retailer of premium autorikshaw body parts with over 7 years of experience.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Latest Products</h4>
+                <ul>
+                    <li><a href="#">Body Frames</a></li>
+                    <li><a href="#">Engine Parts</a></li>
+                    <li><a href="#">Wheels & Tires</a></li>
+                    <li><a href="#">Lighting Systems</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Subscribe</h4>
+                <p>Get updates on new products and offers</p>
+                <div class="subscribe-form">
+                    <input type="email" placeholder="Your email">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 AutoRikshaw Body Parts. All rights reserved.</p>
+        </div>
+    </footer>
 
-.human-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Thought Bubbles */
-.thought-bubble {
-  position: absolute;
-  background: #fff;
-  padding: 10px 18px;
-  border-radius: 25px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #333;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  animation: float 4s ease-in-out infinite;
-}
-
-.bubble1 {
-  top: 10%;
-  right: 60%;
-}
-.bubble2 {
-  top: 35%;
-  right: 5%;
-}
-.bubble3 {
-  top: 60%;
-  right: 25%;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-  .hero-overlay {
-    flex-direction: column;
-    text-align: center;
-  }
-  .hero-content {
-    text-align: center;
-  }
-  .thought-bubble {
-    font-size: 0.85rem;
-  }
-}
-
-</style>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
