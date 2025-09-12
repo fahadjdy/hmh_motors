@@ -439,18 +439,18 @@ h2 {
   line-height: 1.8;
 }
 
-.services-grid {
+.about-services-grid {
   display: grid ;
   grid-template-columns:  1fr;
   gap: 1.5rem;
 }
 
-.about-content .services-grid{
+.about-content .about-services-grid{
     display: grid !important;
       grid-template-columns: repeat(2, 1fr) !important; 
 }
 
-.service-item {
+.about-service-item {
   display: flex !important;             
   align-items: center !important;       
   gap: 1rem;
@@ -461,19 +461,19 @@ h2 {
   cursor: pointer;
 }
 
-/* .service-item:hover {
+/* .about-service-item:hover {
   background: var(--secondary);
   color: #fff;
   transform: translateY(-5px);
 } */
 
 
-.service-item:hover {
+.about-service-item:hover {
   background: var(--light);
   transform: translateY(-5px);
 }
 
-.service-item i {
+.about-service-item i {
   font-size: 1.5rem;
   color: var(--primary);
 }
@@ -484,7 +484,7 @@ h2 {
   background: linear-gradient(135deg, var(--light) 0%, rgba(255, 241, 202, 0.5) 100%);
 }
 
-.services-grid {
+.about-services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   gap: 2rem;
@@ -604,7 +604,7 @@ h2 {
 /* Products Section */
 .products {
   padding: 5rem 0;
-  background: var(--light);
+  background: #fffbef;
 }
 
 .products-container {
@@ -695,20 +695,20 @@ h2 {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* Why Choose Us Section */
-.why-choose {
+/* Services Section */
+.services {
   padding: 5rem 0;
   background: rgb(252, 255, 246);
 }
 
-.why-choose-container {
+.services-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
   text-align: center;
 }
 
-.why-choose-container h2 {
+.services-container h2 {
   font-size: 2.5rem;
   color: var(--primary);
   margin-bottom: 3rem;
@@ -750,7 +750,7 @@ h2 {
 /* Contact Section */
 .contact {
   padding: 5rem 0;
-  background: var(--light);
+  background: #fffbef;
 }
 
 .contact-container {
@@ -1000,7 +1000,7 @@ h2 {
     gap: 2rem;
   }
 
-  .services-grid {
+  .about-services-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1028,7 +1028,7 @@ h2 {
 
   
   .products-container,
-  .why-choose-container {
+  .services-container {
     padding: 0 1rem;
   }
 }
