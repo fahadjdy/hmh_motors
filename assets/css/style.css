@@ -27,6 +27,30 @@ h2 {
   font-family: "Argesta Display", serif;
 }
 
+  .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .col-4 {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+    }
+
+    .col-8 {
+        flex: 0 0 66.66%;
+        max-width: 66.66%;
+    }
+
+    /* for mobile  */
+    @media (max-width: 768px) {
+        .col-4,
+        .col-8 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+
 /* Navigation Styles */
 .navbar {
   background: linear-gradient(135deg, var(--light) 0%, rgba(255, 241, 202, 0.8) 100%);
@@ -130,7 +154,7 @@ h2 {
   align-items: center;
   position: relative;
   overflow: hidden;
-  margin-top: 80px;
+  margin-top: 73px;
 }
 
 .hero-background {
@@ -346,19 +370,6 @@ h2 {
   object-fit: cover;
 }
 
-.experience-badge {
-  position: absolute;
-  bottom: -20px;
-  right: -20px;
-  background: var(--secondary);
-  color: white;
-  padding: 1.5rem;
-  border-radius: 50%;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  animation: rotate 10s linear infinite;
-}
-
 .experience-number {
   font-size: 2.5rem;
   font-weight: 700;
@@ -368,15 +379,6 @@ h2 {
 .experience-text {
   font-size: 0.8rem;
   font-weight: 600;
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .floating-shapes {
@@ -1067,10 +1069,14 @@ h2 {
   margin-bottom: 48px;
   max-width: 320px;
 }
+.why-choose-us img{
+  width: 100%;
+}
 .why-choose-us .features-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px 60px;
+  /* margin-top: -10em; */
 }
 
 .why-choose-us .feature {

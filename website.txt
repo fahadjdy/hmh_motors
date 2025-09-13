@@ -75,3 +75,14 @@ light #FFF1CA
     -> quick links 
     -> latest product 
     -> and subscrib section 
+
+===========================================
+Generate a high-quality, wide-angle hero section image for a professional website of a company that manufactures rickshaw body parts and spare parts. 
+The image should feature:
+
+- A group of modern auto-rickshaws (3–5 rickshaws) parked side by side in front of a workshop or factory background.
+- Show variety in rickshaw colors and designs, representing strength and diversity.
+- Emphasize durability, reliability, and quality craftsmanship.
+- Bright, professional lighting with polished, metallic finishes.
+- Clean, modern, industrial look suitable for a manufacturing company website.
+- Wide aspect ratio (21:9), optimized for a website hero banner.

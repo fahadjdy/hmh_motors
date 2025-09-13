@@ -30,48 +30,108 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 })
 
 // Generate product cards
-function generateProductCards() {
+// Generate product cards with pagination
+function generateProductCards(page = 1) {
   const productsGrid = document.querySelector(".products-grid")
+  productsGrid.innerHTML = "" // clear old products
+
   const products = [
-    { name: "Premium Body Frame", price: "₹15,000", image: "autorikshaw body frame product" },
-    { name: "Engine Mount Kit", price: "₹3,500", image: "autorikshaw engine mount" },
-    { name: "LED Headlight Set", price: "₹2,800", image: "autorikshaw LED headlights" },
-    { name: "Comfort Seat Set", price: "₹8,500", image: "autorikshaw passenger seats" },
-    { name: "Dashboard Panel", price: "₹4,200", image: "autorikshaw dashboard" },
-    { name: "Wheel Assembly", price: "₹6,800", image: "autorikshaw wheel set" },
-    { name: "Side Mirror Set", price: "₹1,200", image: "autorikshaw side mirrors" },
-    { name: "Brake System Kit", price: "₹5,500", image: "autorikshaw brake parts" },
-    { name: "Suspension Kit", price: "₹7,200", image: "autorikshaw suspension" },
-    { name: "Electrical Wiring", price: "₹2,100", image: "autorikshaw wiring harness" },
-    { name: "Fuel Tank", price: "₹4,800", image: "autorikshaw fuel tank" },
-    { name: "Exhaust System", price: "₹3,200", image: "autorikshaw exhaust pipe" },
+    { name: "Premium Body Frame", category: "Rikshaw" },
+    { name: "Engine Mount Kit", category: "Rikshaw" },
+    { name: "LED Headlight Set", category: "Rikshaw" },
+    { name: "Comfort Seat Set", category: "Rikshaw" },
+    { name: "Dashboard Panel", category: "Rikshaw" },
+    { name: "Wheel Assembly", category: "Rikshaw" },
+    { name: "Side Mirror Set", category: "Rikshaw" },
+    { name: "Brake System Kit", category: "Rikshaw" },
+    { name: "Suspension Kit", category: "Rikshaw" },
+    { name: "Electrical Wiring", category: "Rikshaw" },
+    { name: "Fuel Tank", category: "Rikshaw" },
+    { name: "Exhaust System", category: "Rikshaw" },
   ]
 
-  products.forEach((product) => {
+  const perPage = 6
+  const totalPages = Math.ceil(products.length / perPage)
+
+  // slice products for current page
+  const start = (page - 1) * perPage
+  const end = start + perPage
+  const currentProducts = products.slice(start, end)
+
+  currentProducts.forEach((product) => {
     const productCard = document.createElement("div")
     productCard.className = "product-card"
     productCard.innerHTML = `
-            <div class="product-image">
-                <img src="/--product-image-.jpg" alt="${product.name}">
-            </div>
-            <div class="product-info">
-                <h3>${product.name}</h3>
-                <p class="product-price">${product.price}</p>
-                <div class="product-actions">
-                    <button class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i>
-                        WhatsApp
-                    </button>
-                    <button class="call-btn">
-                        <i class="fas fa-phone"></i>
-                        Call Now
-                    </button>
-                </div>
-            </div>
-        `
+      <div class="product-image">
+          <img src="assets/img/profile/rikshaw-mumbai.png" alt="${product.name}">
+      </div>
+      <div class="product-info">
+          <h3>${product.name}</h3>
+          <p class="product-category">${product.category}</p>
+          <div class="product-actions">
+              <button class="whatsapp-btn">
+                  <i class="fab fa-whatsapp"></i>
+                  WhatsApp
+              </button>
+              <button class="call-btn">
+                  <i class="fas fa-phone"></i>
+                  Call Now
+              </button>
+          </div>
+      </div>
+    `
     productsGrid.appendChild(productCard)
   })
+
+  generatePagination(totalPages, page)
 }
+
+// Dynamic pagination
+function generatePagination(totalPages, currentPage) {
+  const pagination = document.querySelector(".pagination")
+  pagination.innerHTML = ""
+
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement("button")
+    btn.className = "page-btn"
+    btn.textContent = i
+    if (i === currentPage) btn.classList.add("active")
+
+    btn.addEventListener("click", () => {
+      generateProductCards(i)
+
+       // 👇 Scroll to products section
+      document.querySelector(".products").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      })
+    })
+
+    pagination.appendChild(btn)
+  }
+
+  // Add next button
+  if (currentPage < totalPages) {
+    const nextBtn = document.createElement("button")
+    nextBtn.className = "page-btn"
+    nextBtn.textContent = "Next"
+    nextBtn.addEventListener("click", () => {
+      generateProductCards(currentPage + 1)
+       // 👇 Scroll to products section
+      document.querySelector(".products").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      })
+    })
+    pagination.appendChild(nextBtn)
+  }
+}
+
+// Initialize products when DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  generateProductCards(1)
+})
+
 
 // Add product card styles
 const productStyles = `
@@ -115,11 +175,18 @@ const productStyles = `
     margin-bottom: 0.5rem;
 }
 
-.product-price {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--secondary);
+.product-category {
+    font-size: 12px;
+    font-weight: 400;
+    color: gray;
+    border: 1px solid gray;
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--secondary);
     margin-bottom: 1rem;
+    background: var(--secondary);
+    color: var(--primary);
 }
 
 .product-actions {
