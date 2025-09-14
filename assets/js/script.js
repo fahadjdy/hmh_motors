@@ -263,3 +263,36 @@ window.addEventListener("scroll", () => {
     navbar.style.backdropFilter = "none"
   }
 })
+
+
+
+ // Testimonials Swiper
+        var testimonialSwiper = new Swiper(".testimonial-slider", {
+            loop: true,
+            grabCursor: true,
+            spaceBetween: 30,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 25,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                }
+            },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
