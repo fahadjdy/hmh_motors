@@ -789,6 +789,7 @@ h2 {
   padding: 2rem;
   border-radius: 15px;
   transition: all 0.3s ease;
+  border: 1px solid var(--primary);
 }
 
 .feature-item:hover {
