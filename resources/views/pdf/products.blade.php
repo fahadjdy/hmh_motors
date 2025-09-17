@@ -104,9 +104,10 @@
             <img src="{{ public_path('storage/' . $profile['logo']) }}" alt="Company Logo">
         @endif
         <h1>{{ $profile->name ?? 'HMH Motors' }}</h1>
-        <p>{{ $profile->location .','. $profile->city .','. $profile->state .','. $profile->pincode  }}</p>
-        <p>Email: {{ $profile['email'] ?? 'info@autorikshawparts.com' }} | Phone: {{ $profile['phone'] ?? '+91 98765 43210' }}</p>
+        <p>{{ $profile->location ?? null .','. $profile?->city ?? null .','. $profile->state ?? null .','. $profile->pincode ?? null  }}</p>
+        <p>Email: {{ $profile->email ?? 'info@example.com' }} | Phone: {{ $profile->contact ?? '+91 99999 99999' }}</p>
     </div>
+
 
     <h2 class="section-title">Product Brochure</h2>
 
