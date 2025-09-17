@@ -29,6 +29,17 @@
         </div>
     </section>
 
+    
+  <!-- Call to Action -->
+    <x-cta-section />
+
+
+    
+    <!-- Contact Section -->
+     <x-contact-form />
+
+
+
     <script>
           window.products = @json($products);
     </script>

@@ -12,7 +12,7 @@
             <li class="nav-item"><a href="{{ url('/contact') }}" class="nav-link">Contact</a></li>
         </ul>
         <button class="download-btn">
-            <i class="fas fa-download"></i> Brochure
+           <a href="{{ url('/products/brochure') }}" target="_blank">  <i class="fas fa-download"></i> Brochure </a>
         </button>
         <div class="hamburger">
             <span class="bar"></span>

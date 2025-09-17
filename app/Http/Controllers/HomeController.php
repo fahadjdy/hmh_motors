@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Testimonial;
 
 
 class HomeController extends Controller
@@ -18,7 +19,8 @@ class HomeController extends Controller
             ->select('id', 'name', 'slug', 'primary_image', 'category_id')
             ->get();
 
-        return view('home',compact('categories','products'));
+        $testimonials =Testimonial::all();
+        return view('home',compact('categories','products','testimonials'));
     }
 
    public function category($slug)
@@ -30,12 +32,6 @@ class HomeController extends Controller
             ->get();
         return view('category', compact('category', 'products'));
     }
-
-    // public function product($slug)
-    // {
-    //     $product = Product::where('slug', $slug)->firstOrFail();
-    //     return view('product', compact('product'));
-    // }
 
     public function products()
     {

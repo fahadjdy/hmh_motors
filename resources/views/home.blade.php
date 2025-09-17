@@ -105,8 +105,6 @@
         </div>
     </section>
 
-
-
     <!-- Browse by Category -->
     <section class="categories">
         <div class="categories-container">
@@ -237,59 +235,14 @@
 
 
     <!-- Call to Action -->
-    <section class="cta-section">
-        <div class="cta-container">
-            <h2>Ready to Get Started?</h2>
-            <p>Download our comprehensive brochure to explore our complete range of HMH Motors Industry and services.
-            </p>
-            <button class="download-brochure-btn">
-                <i class="fas fa-download"></i>
-                Download Brochure
-            </button>
-        </div>
-    </section>
-
+    <x-cta-section />
 
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="contact-container">
-            <div class="contact-info">
-                <h2>Get in Touch</h2>
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>{{ $profile->email }}</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+91 {{ $profile->contact }}</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>{{ $profile->location ?? null }}, {{ $profile->city ?? null }}, {{ $profile->state ?? null }} {{ $profile->pincode ?? null }}</span>
-                    </div>
-                </div>
-                <div class="map">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.0!2d72.8777!3d19.0760!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA0JzMzLjYiTiA3MsKwNTInMzkuNyJF!5e0!3m2!1sen!2sin!4v1234567890"
-                        width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-            <div class="contact-form">
-                <h3>Need a Custom Solution?</h3>
-                <form>
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <input type="tel" placeholder="Your Phone">
-                    <textarea placeholder="Your Message" rows="5" required></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
+     <x-contact-form />
 
     <!-- Testimonials Section -->
+    @if($testimonials->isNotEmpty())
     <section class="testimonials">
         <div class="testimonials-container">
             <h2>What Our Clients Say</h2>
@@ -299,89 +252,30 @@
                 <div class="swiper-wrapper">
 
                     <!-- Testimonial Item 1 -->
+                    @foreach ($testimonials as $item) 
+                        
                     <div class="swiper-slide">
                         <div class="testimonial-item">
                             <div class="ornamental-border"></div>
                             <div class="testimonial-content">
-                                <p>HMH Motors provided top-notch quality parts for our fleet. Excellent service and fast delivery!</p>
+                                <p>{{ $item->content ?? $profile->name }}</p>
                             </div>
                             <div class="testimonial-author">
-                                <div class="author-avatar">RS</div>
+                                <div class="author-avatar">
+                                    {{ strtoupper(substr($item->name, 0, 1)) }}{{ strtoupper(substr(strrchr($item->name, ' '), 1, 1)) }}
+                                </div>
                                 <div class="author-info">
-                                    <h4>Rahul Sharma</h4>
-                                    <span>Transport Business Owner</span>
+                                    <h4>
+                                        {{ $item->name ?? 'HMH Motors' }}
+                                    </h4>
+                                    <span>
+                                        {{ $item->designation ?? 'AutoRikshaw Spare Parts Manufacturer' }}
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Testimonial Item 2 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <div class="ornamental-border"></div>
-                            <div class="testimonial-content">
-                                <p>Reliable and affordable products. We've been purchasing from HMH for years and they never disappoint.</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">AD</div>
-                                <div class="author-info">
-                                    <h4>Anita Desai</h4>
-                                    <span>Retail Distributor</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial Item 3 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <div class="ornamental-border"></div>
-                            <div class="testimonial-content">
-                                <p>Their spare parts are durable and always in stock. Highly recommend HMH Motors!</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">MK</div>
-                                <div class="author-info">
-                                    <h4>Mohammed Khan</h4>
-                                    <span>Auto Garage Owner</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial Item 4 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <div class="ornamental-border"></div>
-                            <div class="testimonial-content">
-                                <p>Outstanding customer service and premium quality parts. HMH Motors exceeds expectations every time!</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">SP</div>
-                                <div class="author-info">
-                                    <h4>Suresh Patel</h4>
-                                    <span>Fleet Manager</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial Item 5 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <div class="ornamental-border"></div>
-                            <div class="testimonial-content">
-                                <p>Professional team with deep knowledge of automotive parts. They always find the right solution for our needs.</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">PG</div>
-                                <div class="author-info">
-                                    <h4>Priya Gupta</h4>
-                                    <span>Workshop Owner</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
 
                 </div>
 
@@ -390,6 +284,7 @@
             </div>
         </div>
     </section>
+    @endif
 
     <script>
           window.products = @json($products);

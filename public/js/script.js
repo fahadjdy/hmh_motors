@@ -139,10 +139,123 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 // Contact form submission
+// Utility function to strip HTML tags
+function stripTags(input) {
+  let div = document.createElement("div")
+  div.innerHTML = input
+  return div.textContent || div.innerText || ""
+}
+
+// Show error under field
+function showError(field, message) {
+  let errorEl = field.nextElementSibling
+  if (errorEl && errorEl.classList.contains("error")) {
+    errorEl.innerText = message
+    errorEl.style.display = "block"
+  }
+  field.classList.add("error-input")
+  field.focus()
+}
+
+// Clear errors
+function clearError(field) {
+  let errorEl = field.nextElementSibling
+  if (errorEl && errorEl.classList.contains("error")) {
+    errorEl.innerText = ""
+    errorEl.style.display = "none"
+  }
+  field.classList.remove("error-input")
+}
+
 document.querySelector(".contact-form form").addEventListener("submit", function (e) {
   e.preventDefault()
-  alert("Thank you for your message! We will get back to you soon.")
-  this.reset()
+
+  let form = this
+  let nameField = form.querySelector('input[type="text"]')
+  let emailField = form.querySelector('input[type="email"]')
+  let phoneField = form.querySelector('input[type="tel"]')
+  let messageField = form.querySelector("textarea")
+
+  let name = stripTags(nameField.value.trim())
+  let email = stripTags(emailField.value.trim())
+  let phone = stripTags(phoneField.value.trim())
+  let message = stripTags(messageField.value.trim())
+
+  // Clear old errors
+  ;[nameField, emailField, phoneField, messageField].forEach(clearError)
+
+  // === Frontend Validation ===
+  if (!/^[A-Za-z\s]{1,50}$/.test(name)) {
+    showError(nameField, "Name must contain only letters and spaces (max 50 chars).")
+    return
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 50) {
+    showError(emailField, "Enter a valid email address (max 50 chars).")
+    return
+  }
+
+  phone = phone.replace(/\D/g, "") // remove non-digits
+  phone = phone.replace(/^(91|0)/, "") // remove +91 or 0 at start
+  if (!/^\d{10}$/.test(phone)) {
+    showError(phoneField, "Phone number must be exactly 10 digits.")
+    return
+  }
+
+  if (message.length < 1 || message.length > 500) {
+    showError(messageField, "Message must be between 1 and 500 characters.")
+    return
+  }
+
+  // === Submit to backend ===
+  let formData = new FormData(form)
+
+  fetch(location.origin + "/inquiry", {
+    method: "POST",
+    headers: {
+      "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content")
+    },
+    body: formData
+  })
+    .then(async res => {
+      if (!res.ok) {
+        // Handle Laravel validation errors (422)
+        if (res.status === 422) {
+          let errorData = await res.json()
+          let errors = errorData.errors
+
+          if (errors.name) showError(nameField, errors.name[0])
+          if (errors.email) showError(emailField, errors.email[0])
+          if (errors.mobile) showError(phoneField, errors.mobile[0])
+          if (errors.description) showError(messageField, errors.description[0])
+        } else {
+          alert("Something went wrong. Please try again.")
+        }
+        return
+      }
+
+      return res.json()
+    })
+    .then(data => {
+      if (data && data.status === "success") {
+        alert(data.message)
+        form.reset()
+      }
+    })
+    .catch(err => {
+      console.error("Error:", err)
+      alert("Server error. Please try again later.")
+    })
+})
+
+
+// Handle paste events for phone: strip +91 or 0 automatically
+document.querySelector('input[type="tel"]').addEventListener("paste", function (e) {
+  e.preventDefault()
+  let pasted = (e.clipboardData || window.clipboardData).getData("text")
+  pasted = pasted.replace(/\D/g, "")
+  pasted = pasted.replace(/^(91|0)/, "")
+  this.value = pasted
 })
 
 // Newsletter subscription
@@ -167,32 +280,26 @@ window.addEventListener("scroll", () => {
 
 
  // Testimonials Swiper
-        var testimonialSwiper = new Swiper(".testimonial-slider", {
-            loop: true,
-            grabCursor: true,
-            spaceBetween: 30,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            breakpoints: {
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 20,
-                },
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 25,
-                },
-                1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 30,
-                }
-            },
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
+       var testimonialSwiper = new Swiper(".testimonial-slider", {
+          loop: true,
+          loopedSlides: 1, // adjust based on number of slides you have
+          grabCursor: true,
+          spaceBetween: 30,
+          centeredSlides: true,
+          slidesPerView: 'auto',
+          breakpoints: {
+            320: { slidesPerView: 1, spaceBetween: 20 },
+            768: { slidesPerView: 2, spaceBetween: 25 },
+            1024: { slidesPerView: 2, spaceBetween: 30 },
+          },
+          autoplay: {
+            delay: 2000,
+            disableOnInteraction: false, // ensures autoplay continues after swipe
+            // pauseOnMouseEnter: true, 
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
         });
+

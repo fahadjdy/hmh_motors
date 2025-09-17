@@ -67,7 +67,7 @@ class AdminPanelProvider extends PanelProvider
                     ->icon('heroicon-o-globe-alt'),
                 'Profile' => UserMenuItem::make()
                     ->label('Profile')
-                    ->url('admin/my-profile')
+                    ->url('my-profile')
                     ->icon('heroicon-o-user-circle'),
             ]);
     }

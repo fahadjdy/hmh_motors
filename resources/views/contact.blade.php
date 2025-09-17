@@ -9,12 +9,13 @@
             <ul class="breadcrumb-list">
                 <li><a href="index.html">Home</a></li>
                 <li><span>/</span></li>
-                <li>About Us</li>
+                <li>Contact</li>
             </ul>
-            <h1 class="breadcrumb-title">About Us</h1>
+            <h1 class="breadcrumb-title">Contact</h1>
         </div>
     </section>
 
-
+    <!-- Contact Section -->
+    <x-contact-form />
 
 @endsection
