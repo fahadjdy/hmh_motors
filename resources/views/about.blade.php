@@ -1,6 +1,10 @@
 @extends('layouts.base')
 
-@section('title', $profile->name .' - Home')
+@section('title', $profile->name .' - About')
+
+@section('meta_description', $profile->about)
+@section('meta_keywords', $profile->name . ', rikshaw spare parts, auto parts')
+
 
 @section('content')
  <!-- Breadcrumb Banner -->
@@ -22,7 +26,7 @@
             <div class="about-image">
                 <div class="image-grid">
                     <div class="grid-item medium" data-aos="fade-right">
-                        <img laoding="lazy" src="{{asset('img/profile/rikshaw-mumbai.png'); }}" alt="Frame">
+                        <img loading="lazy" src="{{asset('img/profile/rikshaw-mumbai.png'); }}" alt="Frame">
                     </div>
                 </div>
                 <div class="floating-shapes">

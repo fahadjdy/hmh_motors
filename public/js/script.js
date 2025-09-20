@@ -266,16 +266,16 @@ document.querySelector(".subscribe-form").addEventListener("submit", function (e
 })
 
 // Add scroll effect to navbar
-window.addEventListener("scroll", () => {
-  const navbar = document.querySelector(".navbar")
-  if (window.scrollY > 100) {
-    navbar.style.background = "rgba(255, 241, 202, 0.95)"
-    navbar.style.backdropFilter = "blur(10px)"
-  } else {
-    navbar.style.background = "linear-gradient(135deg, var(--light) 0%, rgba(255, 241, 202, 0.8) 100%)"
-    navbar.style.backdropFilter = "none"
-  }
-})
+// window.addEventListener("scroll", () => {
+//   const navbar = document.querySelector(".navbar")
+//   if (window.scrollY > 100) {
+//     navbar.style.background = "var(--primary)"
+//     navbar.style.backdropFilter = "blur(10px)"
+//   } else {
+//     navbar.style.background = "linear-gradient(135deg, var(--light) 0%, rgba(255, 241, 202, 0.8) 100%)"
+//     navbar.style.backdropFilter = "none"
+//   }
+// })
 
 
 

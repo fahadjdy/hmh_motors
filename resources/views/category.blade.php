@@ -1,6 +1,9 @@
 @extends('layouts.base')
 
-@section('title', $profile->name .' - Home')
+@section('title', $profile->name .' - Category')
+@section('meta_description', $profile->about)
+@section('meta_keywords', $profile->name . ', rikshaw spare parts, auto parts')
+
 
 @section('content')
  <!-- Breadcrumb Banner -->

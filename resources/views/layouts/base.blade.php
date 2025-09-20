@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'HMH Motors Industry')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    {{-- For SEO  --}}
+    <meta name="description" content="@yield('meta_description', 'Leading manufacturer of auto rikshaw body parts at best prices. High-quality, durable, and trusted by customers.')">
+    <meta name="keywords" content="@yield('meta_keywords', 'rikshaw parts, auto rikshaw body parts, HMH Motors, spare parts')">
+    <link rel="canonical" href="{{ url()->current() }}">
+    <meta name="robots" content="noindex, nofollow">
+
+    <meta property="og:title" content="@yield('title', 'HMH Motors Industry')" />
+    <meta property="og:description" content="@yield('meta_description', 'Premium Rikshaw Body Parts Manufacturer')" />
+    <meta property="og:image" content="@yield('meta_image', isset($profile->logo) ? asset('storage/' . $profile->logo) : null)" />
+    <meta property="og:url" content="{{ url()->current() }}" />
+    <meta property="og:type" content="website" />
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,5 +68,5 @@
     </script>
 
     @stack('scripts')
-</body>
+ </body>
 </html>
