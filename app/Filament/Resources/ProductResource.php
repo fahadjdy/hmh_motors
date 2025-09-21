@@ -46,12 +46,22 @@ class ProductResource extends Resource
                 $set('description', $clean);
             }),
 
-            Forms\Components\TextInput::make('price')
-                ->numeric()
-                ->prefix('₹'),
+            // Forms\Components\TextInput::make('price')
+            //     ->numeric()
+            //     ->prefix('₹'),
 
-            Forms\Components\TextInput::make('stock')
-                ->numeric(),
+            // Forms\Components\TextInput::make('stock')
+            //     ->numeric(),
+
+            Forms\Components\TextInput::make('code')
+                ->label('Product Code')
+                ->required()
+                ->maxLength(20)
+                ->unique(ignoreRecord: true)
+                ->afterStateUpdated(function (callable $set, $state) {
+                    $clean = strip_tags($state);   // removes all HTML tags
+                    $set('code', strtoupper($clean));
+                }),
 
             Forms\Components\FileUpload::make('images')
                 ->label('Product Images')
@@ -86,8 +96,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('slug')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('category.name')->label('Category')->sortable(),
                 Tables\Columns\ImageColumn::make('primary_image')->label('Primary'),
-                Tables\Columns\TextColumn::make('price')->money('inr'),
-                Tables\Columns\TextColumn::make('stock'),
+                Tables\Columns\TextColumn::make('code'),
                 Tables\Columns\TextColumn::make('created_at')->dateTime('d M Y'),
             ])
             ->defaultSort('id', 'desc')

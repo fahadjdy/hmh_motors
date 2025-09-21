@@ -7,19 +7,15 @@ use App\Http\Controllers\InquiryController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
 Route::get('/category/{slug}', [HomeController::class, 'category'])->name('category');
 
 Route::get('/product/{slug}', [HomeController::class, 'product'])->name('product');
 
 Route::get('/products', [HomeController::class, 'products'])->name('products');
-
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
 
 Route::get('/products/brochure', [ProductPdfController::class, 'generate'])
     ->name('products.brochure');

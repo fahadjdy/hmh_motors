@@ -17,6 +17,8 @@
     <meta property="og:image" content="@yield('meta_image', isset($profile->logo) ? asset('storage/' . $profile->logo) : null)" />
     <meta property="og:url" content="{{ url()->current() }}" />
     <meta property="og:type" content="website" />
+
+    <link rel="icon" href="{{ asset('storage/' . $profile->favicon) }}" type="image/x-icon">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

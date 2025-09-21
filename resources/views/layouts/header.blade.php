@@ -2,7 +2,11 @@
     <div class="nav-container">
         <div class="nav-logo">
             <a href="{{ url('/') }}">
+                @if($profile && $profile->logo)
+                <img src="{{ Storage::url($profile->logo) }}" alt="{{ $profile->name}}" height="50">
+                @else
                 <h4>HMH MOTORS</h4>
+                @endif
             </a>
         </div>
         <ul class="nav-menu">

@@ -27,10 +27,12 @@
         <div class="footer-column">
             <h4>Latest Products</h4>
             <ul>
-                <li><a href="#">Body Frames</a></li>
-                <li><a href="#">Engine Parts</a></li>
-                <li><a href="#">Wheels & Tires</a></li>
-                <li><a href="#">Lighting Systems</a></li>
+                @foreach ($categories as $key => $category)
+                        <li>
+                            <a href="{{ route('category', $category->slug) }}">{{ $category->name }}</a>
+                        </li>
+                        @if ($key == 3) @break  @endif
+                @endforeach
             </ul>
         </div>
 

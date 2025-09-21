@@ -62,6 +62,7 @@ function generateProductCards(page = 1) {
     productCard.innerHTML = `
       <div class="product-image">
           <img loading="lazy" src="${window.location.origin}/storage/${product.primary_image}" alt="${product.name}">
+          <span>${product.code}</span>
       </div>
       <div class="product-info">
           <h3>${product.name}</h3>
