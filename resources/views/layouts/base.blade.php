@@ -10,7 +10,7 @@
     <meta name="description" content="@yield('meta_description', 'Leading manufacturer of auto rikshaw body parts at best prices. High-quality, durable, and trusted by customers.')">
     <meta name="keywords" content="@yield('meta_keywords', 'rikshaw parts, auto rikshaw body parts, HMH Motors, spare parts')">
     <link rel="canonical" href="{{ url()->current() }}">
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots" content="index, follow">
 
     <meta property="og:title" content="@yield('title', 'HMH Motors Industry')" />
     <meta property="og:description" content="@yield('meta_description', 'Premium Rikshaw Body Parts Manufacturer')" />
@@ -18,7 +18,7 @@
     <meta property="og:url" content="{{ url()->current() }}" />
     <meta property="og:type" content="website" />
 
-    <link rel="icon" href="{{ asset('storage/' . $profile->favicon) }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('storage/company/Favicone.png') }}" type="image/x-icon">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +56,11 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <!-- Custom JS -->    
+    
+    <!-- Custom JS -->  
+    <script>
+         window.profile = @json($profile);
+    </script>  
     <script src="{{ asset('js/script.js') }}"></script>
 
     <!-- AOS -->

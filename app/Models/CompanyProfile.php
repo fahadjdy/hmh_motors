@@ -11,6 +11,7 @@ class CompanyProfile extends Model
         'name',
         'email',
         'contact',
+        'whatsapp',
         'city',
         'state',
         'location',
@@ -25,9 +26,9 @@ class CompanyProfile extends Model
     ];
 
     protected $casts = [
-        'company_image' => 'string',
-        'logo'          => 'string',
-        'favicon'       => 'string',
+        'company_image' => 'array',
+        'logo'          => 'array',
+        'favicon'       => 'array',
         'latitude'      => 'float',
         'longitude'     => 'float',
     ];

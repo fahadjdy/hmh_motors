@@ -68,14 +68,14 @@ function generateProductCards(page = 1) {
           <h3>${product.name}</h3>
           <p class="product-category">${product.category?.name ?? "Uncategorized"}</p>
           <div class="product-actions">
-              <button class="whatsapp-btn">
+              <a href="https://wa.me/${window.profile.whatsapp}" class="whatsapp-btn">
                   <i class="fab fa-whatsapp"></i>
                   WhatsApp
-              </button>
-              <button class="call-btn">
+              </a>
+              <a href="tel:${window.profile.contact}" class="call-btn">
                   <i class="fas fa-phone"></i>
                   Call Now
-              </button>
+              </a>
           </div>
       </div>
     `
@@ -132,12 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
   generateProductCards(1)
 })
 
-
-
-// Initialize products when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  generateProductCards()
-})
 
 // Contact form submission
 // Utility function to strip HTML tags

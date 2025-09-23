@@ -19,6 +19,7 @@ class EditProfile extends Page implements Forms\Contracts\HasForms
     public $name = '';
     public $email = '';
     public $contact = '';
+    public $whatsapp = '';
     public $city = '';
     public $state = '';
     public $location = '';
@@ -54,42 +55,14 @@ class EditProfile extends Page implements Forms\Contracts\HasForms
             Forms\Components\Section::make('Contact Info')
                 ->schema([
                     Forms\Components\TextInput::make('email')->email(),
-                    Forms\Components\TextInput::make('contact')->maxLength(20),
+                    Forms\Components\TextInput::make('contact')->label('Contact Number')->maxLength(20),
+                    Forms\Components\TextInput::make('whatsapp')->label('Whatsapp Number')->maxLength(20),
                     Forms\Components\TextInput::make('city'),
                     Forms\Components\TextInput::make('state'),
                     Forms\Components\TextInput::make('location'),
                     Forms\Components\TextInput::make('pincode'),
                 ])
                 ->columns(2),
-
-            Forms\Components\Section::make('Branding')
-                ->schema([
-                   Forms\Components\FileUpload::make('company_image')
-                        ->directory('company')
-                        ->image()
-                        ->maxSize(2048)
-                        ->storeFiles()
-                        ->preserveFilenames()
-                        ->getUploadedFileNameForStorageUsing(fn ($file) => $file->getClientOriginalName()),
-
-                    Forms\Components\FileUpload::make('logo')
-                        ->directory('company')
-                        ->image()
-                        ->maxSize(1024)
-                        ->storeFiles()
-                        ->preserveFilenames()
-                        ->getUploadedFileNameForStorageUsing(fn ($file) => $file->getClientOriginalName()),
-
-                    Forms\Components\FileUpload::make('favicon')
-                        ->directory('company')
-                        ->image()
-                        ->maxSize(512)
-                        ->storeFiles()
-                        ->preserveFilenames()
-                        ->getUploadedFileNameForStorageUsing(fn ($file) => $file->getClientOriginalName()),
-
-                ])
-                ->columns(3),
 
             Forms\Components\Section::make('Map Location')
                 ->schema([

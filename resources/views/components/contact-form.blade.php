@@ -32,8 +32,8 @@
                 <input type="tel" placeholder="Your Mobile" name="mobile" pattern="[0-9]{10}" required>
                 <div class="error"></div>
 
-                <textarea placeholder="Your Message" rows="5" required name="description"></textarea>
-                <div class="error"></div>
+                    <textarea placeholder="Your Message" rows="5" required name="description"></textarea>
+                    <div class="error"></div>
 
                 <button type="submit">Send Message</button>
                 </form>

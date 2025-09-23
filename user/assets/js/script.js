@@ -63,7 +63,7 @@ function generateProductCards(page = 1) {
     productCard.className = "product-card"
     productCard.innerHTML = `
       <div class="product-image">
-          <img src="assets/img/profile/rikshaw-mumbai.png" alt="${product.name}">
+          <img loading="lazy" src="assets/img/profile/rikshaw-mumbai.png" alt="${product.name}">
       </div>
       <div class="product-info">
           <h3>${product.name}</h3>

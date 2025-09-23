@@ -42,7 +42,7 @@
 
 
 
-    <script>
+    <script>       
           window.products = @json($products);
     </script>
 @endsection

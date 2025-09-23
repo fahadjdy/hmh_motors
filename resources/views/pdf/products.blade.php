@@ -117,7 +117,7 @@
     @foreach($products as $index => $product)
         <td width="33%" valign="top" style="border: 1px solid #ddd;padding:15px; margin:5px;">
             @if($product->primary_image)
-                <img src="{{ public_path('storage/' . $product->primary_image) }}" alt="{{ $product->name }}" style="width:100%; height:150px; object-fit:cover; border-bottom:1px solid #ddd;">
+                <img loading="lazy" src="{{ public_path('storage/' . $product->primary_image) }}" alt="{{ $product->name }}" style="width:100%; height:150px; object-fit:cover; border-bottom:1px solid #ddd;">
             @endif
             <div style="text-align:center; padding:8px 2px;">
                 <h3 style="font-size:14px; margin:6px 0 3px; color:#222;">{{ $product->name }}</h3>
