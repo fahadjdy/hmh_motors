@@ -49,7 +49,7 @@ function generateProductCards(page = 1) {
     return
   }
 
-  const perPage = 6
+  const perPage = 12
   const totalPages = Math.ceil(products.length / perPage)
 
   const start = (page - 1) * perPage

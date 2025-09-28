@@ -9,7 +9,8 @@
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
-                        <span>+91 {{ $profile->contact }}</span>
+                        <span>+91 {{ $profile->contact }}</span> ||
+                        <span>+91 9316808435</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>

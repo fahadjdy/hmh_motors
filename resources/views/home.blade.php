@@ -20,9 +20,9 @@
                 <p class="hero-slogan">All types of Rikshaw Body Parts manufacturer.</p>
                 <p class="hero-description">Leading manufacturer and retailer of premium HMH Motors Industry. We
                     provide durable, high-quality components for all your three-wheeler needs.</p>
-                <a href="#about" class="cta-button">
-                    Get Started
-                    <i class="fas fa-arrow-right"></i>
+                <a href="tel:{{ $profile->contact }}" class="cta-button">
+                    Call Now
+                    <i class="fas fa-phone"></i>
                 </a>
             </div>
             <div class="hero-image" data-aos="fade-left">
@@ -77,35 +77,6 @@
         </div>
     </section>
 
-    <!-- Services Choose Us -->
-    <section class="services" data-aos="fade-up">
-        <div class="services-container">
-            <h2 data-aos="fade-down">Our Services</h2>
-            <!-- <p>Comprehensive solutions for all your autorikshaw needs</p> -->
-            <div class="features-grid">
-                <div class="feature-item" data-aos="zoom-in" data-aos-delay="100">
-                    <i class="fas fa-award"></i>
-                    <h3>Premium Quality</h3>
-                    <p>ISO certified manufacturing with stringent quality control</p>
-                </div>
-                <div class="feature-item" data-aos="zoom-in" data-aos-delay="200">
-                    <i class="fas fa-clock"></i>
-                    <h3>Timely Delivery</h3>
-                    <p>Fast and reliable delivery across all major cities</p>
-                </div>
-                <div class="feature-item" data-aos="zoom-in" data-aos-delay="300">
-                    <i class="fas fa-dollar-sign"></i>
-                    <h3>Competitive Pricing</h3>
-                    <p>Best prices in the market without compromising quality</p>
-                </div>
-                <div class="feature-item" data-aos="zoom-in" data-aos-delay="400">
-                    <i class="fas fa-users"></i>
-                    <h3>Expert Team</h3>
-                    <p>Experienced professionals with deep industry knowledge</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Browse by Category -->
     <section class="categories">
@@ -132,6 +103,37 @@
                 <!-- Product cards will be generated here -->
             </div>
             <div class="pagination">
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Services Choose Us -->
+    <section class="services" data-aos="fade-up">
+        <div class="services-container">
+            <h2 data-aos="fade-down">Our Services</h2>
+            <!-- <p>Comprehensive solutions for all your autorikshaw needs</p> -->
+            <div class="features-grid">
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-award"></i>
+                    <h3>Premium Quality</h3>
+                    <p>ISO certified manufacturing with stringent quality control</p>
+                </div>
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-clock"></i>
+                    <h3>Timely Delivery</h3>
+                    <p>Fast and reliable delivery across all major cities</p>
+                </div>
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Competitive Pricing</h3>
+                    <p>Best prices in the market without compromising quality</p>
+                </div>
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-users"></i>
+                    <h3>Expert Team</h3>
+                    <p>Experienced professionals with deep industry knowledge</p>
+                </div>
             </div>
         </div>
     </section>
