@@ -9,6 +9,15 @@
   --light-gray: #999999;
 }
 
+/* Custom brand font (HMH Motors name) */
+@font-face {
+  font-family: "HMH";
+  src: url("/font/hmh.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Reset and Base Styles */
 * {
   margin: 0;
@@ -305,6 +314,7 @@ h2 {
 }
 
 .hero-title {
+  font-family: "HMH", "Argesta Display", serif;
   font-size: 3.5rem;
   font-weight: 700;
   color: var(--primary);
@@ -1050,6 +1060,12 @@ h2 {
   color: var(--secondary);
 }
 
+.footer-logo h4 {
+  font-family: "HMH", "Argesta Display", serif;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+}
+
 .footer-column p {
   margin-bottom: 1rem;
   opacity: 0.8;
@@ -1243,6 +1259,7 @@ h2 {
 }
 
 .why-choose-us .main-heading {
+  font-family: "HMH", "Argesta Display", serif;
   font-size: 32px;
   font-weight: 600;
   color: var(--primary);
