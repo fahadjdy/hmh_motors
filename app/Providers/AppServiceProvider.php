@@ -21,7 +21,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $profile = CompanyProfile::first();
-        View::share('profile', $profile);
+        // DB available na ho (CI build, fresh install before migrate) to
+        // crash na ho — gracefully null share karo.
+        try {
+            View::share('profile', CompanyProfile::first());
+        } catch (\Throwable $e) {
+            View::share('profile', null);
+        }
     }
 }
