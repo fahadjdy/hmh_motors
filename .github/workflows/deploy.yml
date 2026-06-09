@@ -1,0 +1,60 @@
+name: Deploy to FTP
+
+on:
+  push:
+    branches: [ master ]   # is branch pe push hote hi deploy
+  workflow_dispatch:        # manually "Run workflow" button se bhi chalega
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # ---------- PHP + Composer ----------
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Prepare .env (sirf build ke liye, server pe upload nahi hoga)
+        run: cp .env.example .env
+
+      - name: Install Composer dependencies
+        run: composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+
+      - name: Generate app key (build ke liye)
+        run: php artisan key:generate
+
+      # ---------- Node + Vite build ----------
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build assets (Vite + Tailwind)
+        run: |
+          npm install
+          npm run build
+
+      # ---------- FTP Upload ----------
+      - name: Deploy via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.hmhmotorsindustry.com
+          username: hmhmotors
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps           # explicit FTPS
+          port: 21
+          server-dir: /public_html/   # web root
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/node_modules/**
+            **/tests/**
+            .env
+            .env.*
+            storage/**
