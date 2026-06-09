@@ -26,7 +26,7 @@
                 </a>
             </div>
             <div class="hero-image" data-aos="fade-left">
-                <img loading="lazy" src="{{asset('img/profile/ev-rikshaw.png'); }}" alt="AutoRikshaw Family">
+                <x-picture :src="asset('img/profile/ev-rikshaw.png')" alt="AutoRikshaw Family" loading="eager" />
                 <div class="floating-icons">
                     <i class="fas fa-cog icon-1"></i>
                     <i class="fas fa-wrench icon-2"></i>
@@ -42,7 +42,7 @@
             <div class="about-image">
                 <div class="image-grid">
                     <div class="grid-item medium" data-aos="fade-right">
-                        <img loading="lazy" src="{{asset('img/profile/rikshaw-mumbai.png'); }}" alt="Frame">
+                        <x-picture :src="asset('img/profile/rikshaw-mumbai.png')" alt="Frame" />
                     </div>
                 </div>
                 <div class="floating-shapes">
@@ -86,7 +86,7 @@
                 @foreach ($categories as $category)
                 <a href="{{ route('category', $category->slug) }}">
                     <div class="category-item">
-                            <img loading="lazy" src="{{ asset('storage/' . $category->primary_image) }}" alt="{{ $category->name }}">
+                            <x-picture :src="asset('storage/' . $category->primary_image)" :alt="$category->name" />
                             <span>{{ $category->name }}</span>
                         </div>
                     </a>
@@ -151,7 +151,7 @@
                     </p>
                 </div>
                 <div class="col-8" data-aos="fade-left">
-                    <img loading="lazy" src="{{ asset('img/profile/HD-group-rikshaw.png'); }}" alt="AutoRikshaw Family">
+                    <x-picture :src="asset('img/profile/HD-group-rikshaw.png')" alt="AutoRikshaw Family" />
                 </div>
             </div>
 

@@ -2,7 +2,7 @@
     <div class="nav-container">
         <div class="nav-logo">
             <a href="{{ url('/') }}">
-                <img src="{{ Storage::url('company/Logo.png') }}" alt="{{ $profile->name}}" height="50">                
+                <x-picture :src="Storage::url('company/Logo.png')" :alt="$profile->name" height="50" loading="eager" />
             </a>
         </div>
         <ul class="nav-menu">

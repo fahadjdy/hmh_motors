@@ -59,9 +59,14 @@ function generateProductCards(page = 1) {
   currentProducts.forEach((product) => {
     const productCard = document.createElement("div")
     productCard.className = "product-card"
+    const imgUrl = `${window.location.origin}/storage/${product.primary_image}`
+    const webpUrl = imgUrl.replace(/\.(png|jpe?g)$/i, ".webp")
     productCard.innerHTML = `
       <div class="product-image">
-          <img loading="lazy" src="${window.location.origin}/storage/${product.primary_image}" alt="${product.name}">
+          <picture>
+              <source srcset="${webpUrl}" type="image/webp">
+              <img loading="lazy" src="${imgUrl}" alt="${product.name}">
+          </picture>
           <span>${product.code}</span>
       </div>
       <div class="product-info">
