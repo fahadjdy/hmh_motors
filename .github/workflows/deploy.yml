@@ -57,8 +57,11 @@ jobs:
           set ftp:ssl-protect-list true
           set ssl:verify-certificate no
           set ftp:passive-mode true
-          set net:max-retries 2
-          set net:timeout 20
-          mirror --reverse --verbose --parallel=4 --no-perms --exclude '^\.git' --exclude '^node_modules/' --exclude '^tests/' --exclude '^\.env' --exclude '^storage/' ./ /public_html/
+          set ftp:use-pasv-address no
+          set ftp:prefer-epsv no
+          set net:max-retries 5
+          set net:timeout 30
+          set net:reconnect-interval-base 5
+          mirror --reverse --verbose --no-perms --exclude '^\.git' --exclude '^node_modules/' --exclude '^tests/' --exclude '^\.env' --exclude '^storage/' ./ /public_html/
           bye
           EOF
