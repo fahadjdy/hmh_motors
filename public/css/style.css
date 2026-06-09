@@ -528,6 +528,10 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
+.about-content h2 .company-name {
+  font-family: "Varino", "Argesta Display", serif;
+}
+
 .about-content h3 {
   font-size: 1.5rem;
   color: var(--accent);

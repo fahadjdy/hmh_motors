@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="about-content">
-                <h2>Welcome to {{ $profile->name }}</h2>
+                <h2>Welcome to <span class="company-name">{{ $profile->name }}</span></h2>
                 <h3>{{ $profile->slogan }}</h3>
                 <p>{{ $profile->about }}</p>
 
