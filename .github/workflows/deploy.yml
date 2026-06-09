@@ -50,7 +50,13 @@ jobs:
           FTP_USERNAME: hmhmotors
           LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
-          lftp -u "$FTP_USERNAME" --env-password "$FTP_HOST" <<'EOF'
+          # ----- VENDOR TOGGLE -----
+          # Abhi vendor/ deploy se skip hai (tum manually upload karoge — fast).
+          # Site live hone ke baad neeche wali line ke aage '#' laga do (comment),
+          # taaki future deploys composer ka vendor/ bhi upload karein.
+          VENDOR_SKIP="--exclude ^vendor/"
+
+          lftp -u "$FTP_USERNAME" --env-password "$FTP_HOST" <<EOF
           set ftp:ssl-allow true
           set ftp:ssl-force true
           set ftp:ssl-protect-data true
@@ -62,6 +68,6 @@ jobs:
           set net:max-retries 5
           set net:timeout 30
           set net:reconnect-interval-base 5
-          mirror --reverse --verbose --no-perms --exclude '^\.git' --exclude '^node_modules/' --exclude '^tests/' --exclude '^\.env' --exclude '^storage/' ./ /public_html/
+          mirror --reverse --verbose --no-perms $VENDOR_SKIP --exclude '^\.git' --exclude '^node_modules/' --exclude '^tests/' --exclude '^\.env' --exclude '^storage/' ./ /public_html/
           bye
           EOF
