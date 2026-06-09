@@ -1,0 +1,14 @@
+# HMH Motors — root .htaccess (/public_html/.htaccess)
+# Poora Laravel project public_html me hai, par web root public/ hona chahiye.
+# Ye har request ko public/ folder ke andar bhej deta hai. public/ ka apna
+# .htaccess phir Laravel ke front controller (index.php) ko handle karta hai.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Already public/ ke andar ka request ho to dobara prefix mat karo (loop se bacho)
+    RewriteCond %{REQUEST_URI} !^/public/
+
+    # Baaki sab kuch public/ me route karo
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
