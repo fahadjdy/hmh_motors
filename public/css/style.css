@@ -329,6 +329,12 @@ h2 {
   color: var(--primary);
   margin-bottom: 1rem;
   line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* Company name always shown in uppercase wherever it appears */
+.company-name {
+  text-transform: uppercase;
 }
 
 .hero-slogan {

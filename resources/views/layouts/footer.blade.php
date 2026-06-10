@@ -47,6 +47,6 @@
     </div>
 
     <div class="footer-bottom">
-        <p>&copy; {{ date('Y') }} {{ $profile->name }}. All rights reserved. | Developed by : <a target="_blank" href="https://fahad-jadiya.com/" class="text-white">Fahad Jadiya</a></p>
+        <p>&copy; {{ date('Y') }} <span class="company-name">{{ $profile->name }}</span>. All rights reserved. | Developed by : <a target="_blank" href="https://fahad-jadiya.com/" class="text-white">Fahad Jadiya</a></p>
     </div>
 </footer>

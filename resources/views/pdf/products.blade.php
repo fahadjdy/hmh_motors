@@ -21,6 +21,7 @@
             font-size: 80px;
             color: rgba(200, 200, 200, 0.15);
             white-space: nowrap;
+            text-transform: uppercase;
             z-index: -1;
         }
 
@@ -40,6 +41,7 @@
             margin: 0;
             font-size: 24px;
             color: #333;
+            text-transform: uppercase;
         }
 
         .header p {
